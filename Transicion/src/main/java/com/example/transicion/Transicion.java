@@ -17,16 +17,16 @@ public class Transicion extends Application {
     @Override
     public void start(Stage primaryStage) {
 
-        Circle circle = new Circle(200, 200, 100);
-        circle.setFill(null);
-        circle.setStroke(Color.BLUE);
+        Circle circle = new Circle(200, 200, 100); // creamos un circulo
+        circle.setFill(null); // vacio
+        circle.setStroke(Color.BLUE); //borde azul
 
 
-        Rectangle rectangle = new Rectangle(20, 20);
-        rectangle.setFill(Color.RED);
+        Rectangle rectangle = new Rectangle(20, 30); //creamos un rectangulo 
+        rectangle.setFill(Color.RED); //le damos color rojo
 
 
-        PathTransition move = new PathTransition();
+        PathTransition move = new PathTransition(); // creamos una transicion
         move.setDuration(Duration.millis(4000));
         move.setPath(circle);
         move.setNode(rectangle);
@@ -35,20 +35,20 @@ public class Transicion extends Application {
         move.play();
 
 
-        circle.setOnMousePressed((MouseEvent event) -> {
+        circle.setOnMousePressed((MouseEvent event) -> { // evento pausa
             move.pause();
         });
 
 
-        circle.setOnMouseReleased((MouseEvent event) -> {
+        circle.setOnMouseReleased((MouseEvent event) -> { //evento actuar
             move.play();
         });
 
 
-        Group root = new Group(circle, rectangle);
-        Scene scene = new Scene(root, 400, 400);
+        Group root = new Group(circle, rectangle); // metemos ambas figuras en un grupo 
+        Scene scene = new Scene(root, 400, 400); // introducimos en la escena el grupo y definimos el tamanio
 
-        primaryStage.setTitle("PathTransition Example");
+        primaryStage.setTitle("PathTransition");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
